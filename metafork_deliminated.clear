@@ -1,0 +1,99 @@
+Western UniversityWestern University
+Scholarship@WesternScholarship@Western
+Electronic Thesis and Dissertation Repository
+12-16-2013 12:00 AM
+On the Interoperability of Programming Languages based on theOn the Interoperability of Programming Languages based on the
+Fork-Join Parallelism ModelFork-Join Parallelism Model
+Sushek Shekar,
+The University of Western Ontario
+Supervisor: Dr.Marc Moreno Maza,
+The University of Western Ontario
+A thesis submitted in partial fulfillment of the requirements for the Master of Science degree in
+Computer Science
+© Sushek Shekar 2013
+Follow this and additional works at: https://ir.lib.uwo.ca/etd
+Part of the Computer and Systems Architecture Commons, Programming Languages and Compilers
+Commons, and the Software Engineering Commons
+Recommended CitationRecommended Citation
+Shekar, Sushek, "On the Interoperability of Programming Languages based on the Fork-Join Parallelism
+Model" (2013).
+Electronic Thesis and Dissertation Repository. 1848.
+https://ir.lib.uwo.ca/etd/1848
+This Dissertation/Thesis is brought to you for free and open access by Scholarship@Western. It has been accepted
+for inclusion in Electronic Thesis and Dissertation Repository by an authorized administrator of
+Scholarship@Western. For more information, please contact wlswadmin@uwo.ca.
+On the Interoperability of Programming Languages based on the
+Fork-Join Parallelism Model
+(Thesis format: Monograph)
+by
+Sushek Shekar
+Graduate Program
+in
+Computer Science
+A thesis submitted in partial fulfillment
+of the requirements for the degree of
+Master of Science
+The School of Graduate and Postdoctoral Studies
+The University of Western Ontario
+London, Ontario, Canada
+c© S.S 2013
+Abstract
+This thesis describes the implementation of MetaFork, a meta-language for con-
+currency platforms targeting multicore architectures. First of all, MetaFork is
+a multithreaded language based on the fork-join model of concurrency: it allows
+the programmer to express parallel algorithms assuming that tasks are dynamically
+scheduled at run-time. While MetaFork makes no assumption about the run-time
+system, it formally defines the serial C-elision of a MetaFork program.
+In addition, MetaFork is a suite of source-to-source compilers permitting the au-
+tomatic translation of multithreaded programs between programming languages based
+on the fork-join model. Currently, this compilation framework supports the OpenMP
+and CilkPlus concurrency platforms. The implementation of those compilers ex-
+plicitly manages parallelism according to the directives specified in MetaFork,
+OpenMP and CilkPlus.
+We evaluate experimentally the benefits of MetaFork. First, we show that this
+framework can be used to perform comparative implementation of a given multi-
+threaded algorithm so as to narrow performance bottlenecks in one implementation
+of this algorithm. Secondly, we show that the translation of hand written and highly
+optimized code within MetaFork generally produces code with similar performance
+as the original.
+Keywords. Multicore architectures, concurrency platforms, fork-join model,
+CilkPlus, OpenMP, source-to-source compilation, performance.
+ii
+Acknowledgments
+Firstly, I would like to thank my thesis supervisor Dr. Marc Moreno Maza in the
+Department of Computer Science at The University of Western Ontario. His helping
+hands toward the completion of this research work were always extended for me. He
+consistently helped me on the way of this thesis and guided me in the right direction
+whenever he thought I needed it. I am grateful to him for his excellent support to
+me in all the steps of successful completion of this research.
+Secondly, I would like to thank Xiaohui Chen in the Department of Computer
+Science at The University of Western Ontario for working along with me and helping
+me successfully complete this research work. I am also grateful to our colleagues
+Priya Unnikrishnan and Abdoul-Kader Keita (IBM Toronto Labs) for their advice
+and technical support.
+Thirdly, all my sincere thanks and appreciation go to all the members from our
+Ontario Research Centre for Computer Algebra (ORCCA) lab, Computer Science De-
+partment for their invaluable teaching support as well as all kinds of other assistance,
+and all the members of my thesis examination committee.
+Finally, I would like to thank all of my friends around me for their consistent en-
+couragement and would like to show my heartiest gratefulness to my family members
+for their continued support.
+iii
+Chapter 6
+Curriculum Vitae
+Sushek Shekar
+6.0.1 Summary
+Worked as a research assistant on HPC(High Performance Computing), in particular
+compilers and work on various industry oriented HPC projects from the renowned
+ORCCA(Ontario Research Center for Computer Algebra) lab at Western University.
+I am seeking oppurtunites in the software Industry. Strong ability to multi-task
+under pressure with minimum supervision & reach goals within deadlines.
+6.0.2 Education
+M.Sc(Thesis) Computer Science, Western University. 2012-2013.
+Grade Average : 90%
+Bachelors of Engineering(B.E) in Computer Science, National Institute of
+Engineering, Mysore. 2008-2012. Grade Average : 86%
+6.0.3 Certifications
+Advanced Diploma in Vfx and Animation, Image Multimedia, Mysore. 2007-
+2008.
+96
